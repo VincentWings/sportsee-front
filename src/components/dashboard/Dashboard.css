@@ -1,0 +1,184 @@
+.dashboard {
+    width: 100%;
+}
+
+.dashboard-content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 6rem;
+}
+
+.charts-container {
+    width: 100%;
+    margin-right: 3rem;
+}
+
+.small-charts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.dashboard-title .highlight {
+    color: var(--color-red);
+}
+
+.activity-chart,
+.spent-energy,
+.session-length-chart,
+.score-container {
+    margin-bottom: 4rem;
+    padding: 1.5rem;
+    background: var(--color-grey-lighter);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.spent-energy {
+    display: flex;
+    flex-direction: column;
+    padding: .5rem;
+}
+
+.spent-energy--icon {
+    margin-bottom: 1.5rem;
+}
+
+.spent-energy--number {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.spent-energy--name {
+    font-size: 1rem;
+}
+
+.chart-title {
+    margin-right: auto;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.recharts-text {
+    font-size: 1.4rem;
+}
+
+.activity-chart--legend {
+    color: var(--color-grey);
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.activity-chart--tooltip {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-red-dark);
+    color: var(--color-white);
+    padding: 1rem;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 2;
+}
+
+.custom-legend {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6rem;
+}
+
+.chart-legend {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.recharts-surface {
+    width: 1rem;
+    height: 1rem;
+}
+
+.legend-color {
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+@media (min-width: 1200px) {
+    .dashboard-content {
+        flex-direction: row;
+    }
+
+    .stats-container {
+        grid-auto-rows: max-content;
+        gap: 0;
+        width: 30%;
+        max-width: 26rem;
+    }
+
+    .activity-chart,
+    .spent-energy,
+    .session-length-chart,
+    .score-container {
+        padding: 3rem;
+    }
+
+    .spent-energy {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        align-items: center;
+        padding: 1.5rem;
+    }
+
+    .spent-energy--icon {
+        margin-bottom: 0;
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .spent-energy--info {
+        margin-left: 2.5rem;
+    }
+
+    .spent-energy--number {
+        font-size: 2rem;
+    }
+
+    .spent-energy--name {
+        font-size: 1.4rem;
+    }
+
+    .custom-legend {
+        flex-direction: row;
+    }
+
+    .chart-legend {
+        margin-right: 3rem;
+    }
+
+    .chart-legend:last-of-type {
+        margin-right: 0;
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .small-charts {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

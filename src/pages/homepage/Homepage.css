@@ -1,0 +1,55 @@
+.user-selector {
+    display: flex;
+    gap: 2rem;
+}
+
+.user-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.user-link p {
+    margin-top: .5rem;
+    font-weight: bold;
+    color: var(--color-grey);
+    transition: color 0.3s ease;
+}
+
+.user-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.user-image svg {
+    width: 8rem;
+    height: 8rem;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    fill: var(--color-grey);
+}
+
+.user-link:hover .user-image {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+}
+
+.user-link:hover p {
+    color: var(--color-grey-light);
+}
+
+@media (min-width: 905px) {
+    .user-link span {
+        margin-top: 1rem;
+    }
+
+    .user-image svg {
+        width: 10rem;
+        height: 10rem;
+    }
+}

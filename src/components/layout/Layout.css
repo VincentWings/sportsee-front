@@ -1,0 +1,29 @@
+main {
+    order: 2;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 144rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 18.5rem;
+    padding-left: 8.5rem;
+    padding-right: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+@media (min-width: 392px) {
+    main {
+        padding-top: 15.5rem;
+    } 
+}
+
+@media (min-width: 905px) {
+    main {
+        padding-top: 14.5rem;
+        padding-left: 16.5rem;
+        padding-right: 4.5rem;
+        padding-bottom: 4.5rem;
+    } 
+}

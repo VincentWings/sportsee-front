@@ -1,0 +1,44 @@
+.navbar {
+    display: inline-block;
+    width: 100%;
+    max-width: 99.5rem;
+}
+
+.navbar ul {
+    list-style: none;
+}
+
+.navbar li {
+    display: inline-block;
+    margin-right: 1.5rem;
+    line-height: 1.6;
+}
+
+.navbar li:last-child {
+    margin-right: 0;
+}
+
+.navbar a {
+    color: #fff;
+    font-size: var(--font-size-navbar);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: var(--color-red);
+}
+
+@media (min-width: 905px) {
+    .navbar ul {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+    }
+
+    .navbar li {
+        margin-right: 6rem;
+        line-height: initial;
+    }
+}

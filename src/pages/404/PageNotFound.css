@@ -1,0 +1,10 @@
+.error404 {
+    color: var(--color-red);
+    font-size: 10rem;
+}
+
+@media (min-width: 905px) {
+    .error404 {
+        font-size: 20rem;
+    }
+}

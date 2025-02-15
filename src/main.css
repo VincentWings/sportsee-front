@@ -1,0 +1,79 @@
+/**
+ * Global CSS Variables
+ * Define reusable color and font variables for consistent styling across the app.
+ */
+ :root {
+    --color-black: #020203;
+    --color-black-alt: #282d30;
+    --color-white: #ffffff;
+    --color-red: #FF0101;
+    --color-red-dark: #E60000;
+    --color-pink: #fcc8d5;
+    --color-blue: #7cd7fa;
+    --color-grey: grey;
+    --color-grey-dark: #282D30;
+    --color-grey-light: #9a9a9a;
+    --color-grey-lighter: #FBFBFB;
+    --color-grey-lighter-alt: #DEDEDE;
+    --font-primary: "Roboto", serif;
+    --font-size-base: 1.6rem;
+    --font-size-navbar: 1.6rem;
+}
+
+/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* HTML Settings */
+html {
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+
+/* Heading Styles */
+h1 {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Paragraph Styles */
+p {
+    margin-bottom: 1rem;
+}
+
+/* Body Styles */
+body {
+    color: #000;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    font-optical-sizing: auto;
+    overflow-y: scroll;
+}
+
+/**
+ * Container Styles
+ * Flexbox layout for the main container to fill the viewport height.
+ */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Responsive Design for larger screens */
+@media (min-width: 905px) {
+    :root {
+        --font-size-navbar: 2.4rem;
+    }
+
+    h1 {
+        font-size: 3.6rem;
+        margin-bottom: 3rem;
+    }
+
+    body {
+        overflow-y: scroll;
+    }
+}
