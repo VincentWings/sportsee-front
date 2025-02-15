@@ -2,7 +2,7 @@
  * A flag to toggle between using mock data or real API data.
  * @type {boolean}
  */
-const useMockData = false
+const useMockData = true
 
 /**
  * Base URL for the real API
