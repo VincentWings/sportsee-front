@@ -28,7 +28,7 @@ const fetchMockData = async () => {
     if (!response.ok) throw new Error("Failed to load mock data")
     return await response.json() // Return mock data
   } catch (error) {
-    console.error("Error fetching mock data:", error)
+    console.error("⚠️ Error fetching mock data:", error)
     return null // Return null if there's an error
   }
 }
@@ -41,10 +41,10 @@ const fetchMockData = async () => {
 const fetchApiData = async (endpoint) => {
   try {
     const response = await fetch(`${ApiBaseUrl}${endpoint}`)
-    if (!response.ok) throw new Error(`Error fetching data from ${endpoint}`)
+    if (!response.ok) throw new Error(`❌ Error fetching data from ${endpoint}`)
     return await response.json() // Return parsed API data
   } catch (error) {
-    console.error(`Error fetching data from ${endpoint}:`, error)
+    console.error(`❌ Error fetching data from ${endpoint}:`, error)
     return null // Return null if there's an error
   }
 }
@@ -59,27 +59,31 @@ const fetchApiData = async (endpoint) => {
 const getUserData = async (userId, endpoint, model) => {
   let data
 
-  // If using mock data, fetch it from the mockData.json file
   if (useMockData) {
     const mockData = await fetchMockData()
+
     if (mockData && mockData[endpoint]) {
-      // Find the user data matching the userId
-      data = mockData[endpoint].find(item => item.userId === parseInt(userId, 10))
+      // Vérification si `userId` est bien dans la structure
+      if (endpoint === "USER_MAIN_DATA") {
+        data = mockData[endpoint].find(user => user.id === parseInt(userId, 10))
+      } else {
+        data = mockData[endpoint].find(item => item.userId === parseInt(userId, 10))
+      }
     }
   }
 
-  // If mock data is not available or using real API, fetch data from the API
+  // Si mockData est vide ou indisponible, on tente via API
   if (!data) {
-    const apiData = await fetchApiData(`${endpoint.replace("{userId}", userId)}`)
+    const apiData = await fetchApiData(endpoint.replace("{userId}", userId))
     data = apiData ? apiData.data : null
   }
 
-  // If data is found, return the model with that data
   if (data) {
+    console.log(`✅ Data fetched successfully for ${endpoint}:`, data)
     return new model(data)
   } else {
-    console.error(`No data found for userId ${userId}`)
-    return null // Return null if no data is found
+    console.error(`❌ No data found for userId ${userId} on endpoint ${endpoint}`)
+    return null
   }
 }
 
@@ -88,25 +92,25 @@ const getUserData = async (userId, endpoint, model) => {
  * @param {number|string} userId The user ID to fetch data for.
  * @returns {Promise<UserDataModel|null>} An instance of UserDataModel with fetched data or null.
  */
-export const getUserMainData = (userId) => getUserData(userId, "/user/{userId}", UserDataModel)
+export const getUserMainData = (userId) => getUserData(userId, "USER_MAIN_DATA", UserDataModel)
 
 /**
  * Fetch user activity data using the generic getUserData function.
  * @param {number|string} userId The user ID to fetch data for.
  * @returns {Promise<UserActivityModel|null>} An instance of UserActivityModel with fetched data or null.
  */
-export const getUserActivity = (userId) => getUserData(userId, "/user/{userId}/activity", UserActivityModel)
+export const getUserActivity = (userId) => getUserData(userId, "USER_ACTIVITY", UserActivityModel)
 
 /**
  * Fetch user average sessions data using the generic getUserData function.
  * @param {number|string} userId The user ID to fetch data for.
  * @returns {Promise<UserAverageSessionsModel|null>} An instance of UserAverageSessionsModel with fetched data or null.
  */
-export const getUserAverageSessions = (userId) => getUserData(userId, "/user/{userId}/average-sessions", UserAverageSessionsModel)
+export const getUserAverageSessions = (userId) => getUserData(userId, "USER_AVERAGE_SESSIONS", UserAverageSessionsModel)
 
 /**
  * Fetch user performance data using the generic getUserData function.
  * @param {number|string} userId The user ID to fetch data for.
  * @returns {Promise<UserPerformanceModel|null>} An instance of UserPerformanceModel with fetched data or null.
  */
-export const getUserPerformance = (userId) => getUserData(userId, "/user/{userId}/performance", UserPerformanceModel)
+export const getUserPerformance = (userId) => getUserData(userId, "USER_PERFORMANCE", UserPerformanceModel)
