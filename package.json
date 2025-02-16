@@ -29,5 +29,8 @@
     "globals": "^15.14.0",
     "jsdoc": "^4.0.4",
     "nodemon": "^3.1.9"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
